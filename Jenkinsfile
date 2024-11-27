@@ -7,6 +7,7 @@ pipeline {
             steps {
                 script {
                     bat 'docker build -t my-nodejs-app .'
+                    docker 
                 }
             }
         }
@@ -21,7 +22,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    
+                   bat ''' 
+                    docker run -d -p 3001:3001 my-nodejs-app . '''
                     echo 'Deploying application...'
                 }
             }
